@@ -11,12 +11,12 @@ if(isset($_SESSION['sin']))
 
 if(!empty($_POST['sin']))
 {
-	$fn = $ln = $sin = $empId = null;
-	if(ctype_alnum($_POST['fn']))
-		$fn = $_POST['fn'];
-	
-	if(ctype_alnum($_POST['ln']))
-		$ln	= $_POST['ln'];
+	$sin = $empId = null;
+//	if(ctype_alnum($_POST['fn']))
+//		$fn = $_POST['fn'];
+//
+//	if(ctype_alnum($_POST['ln']))
+//		$ln	= $_POST['ln'];
 	
 	$post_sin = str_replace("-", "", $_POST['sin']);
 	if(ctype_digit($post_sin))
@@ -27,18 +27,18 @@ if(!empty($_POST['sin']))
 	
 
 	
-	if($fn && $ln && $sin && $empId)
+	if($sin && $empId)
 	{
 		$date		= date("Y-m-d H:i:s", time());
-		$csvArr[] 	= $ln;
-		$csvArr[] 	= $fn;
+//		$csvArr[] 	= $ln;
+//		$csvArr[] 	= $fn;
 		$csvArr[] 	= $sin;
 		$csvArr[] 	= $empId;
 		$csvArr[]	= $date;
 		$csvData 	= implode(",", $csvArr);
 		$csvData	.= "\n";
 	//	$fp 		= fopen("C:/Documents and Settings/Administrator/My Documents/Dropbox/KHC/EmployeeID_iphone.csv", "a");
-		$fp 		= fopen("EmployeeID_iphone.csv", "a");
+		$fp 		= fopen("EmployeeID_nextgen.csv", "a");
 
 		if($fp)
 		{
@@ -351,19 +351,19 @@ if(!empty($_POST['sin']))
 	{
 		var sin_val = document.getElementById('sin').value;
 
-		if(!document.getElementById('fn').value)
-		{
-			alert("Firstname cannot be empty.");
-			document.getElementById('fn').focus();
-			return false;
-		}
-		else if(!document.getElementById('ln').value)
-		{
-			alert("Lastname cannot be empty.");
-			document.getElementById('ln').focus();
-			return false;
-		}
-		else if(!sin_val)
+//		if(!document.getElementById('fn').value)
+//		{
+//			alert("Firstname cannot be empty.");
+//			document.getElementById('fn').focus();
+//			return false;
+//		}
+//		else if(!document.getElementById('ln').value)
+//		{
+//			alert("Lastname cannot be empty.");
+//			document.getElementById('ln').focus();
+//			return false;
+//		}
+		if(!sin_val)
 		{
 			alert("Social Insurance Number cannot be empty.");
 			document.getElementById('sin').focus();
@@ -414,13 +414,7 @@ if(!empty($_POST['sin']))
       <div class="container">
 	  	<p><?php echo $err_msg; ?></p>
         <h1>Kindred Home Care Employee ID Generator</h1>
-        <p>Employee First Name: &nbsp; <br />
-          <input name="fn" id="fn" type="text" class="textbox" />
-          <br />
-          Employee Last Name: &nbsp; <br />
-          <input name="ln" id="ln" type="text" class="textbox" />
-          <br />
-          Social Insurance Number: &nbsp; <br />
+        <p>Social Insurance Number: &nbsp; <br />
           <input name="sin" id="sin" type="text" class="textbox" maxlength="11" onKeyPress="return isNumberKey(event)" />
           <br />
           The Employee ID: &nbsp; <br />
