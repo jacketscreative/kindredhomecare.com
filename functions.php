@@ -11,4 +11,11 @@ function salient_child_enqueue_styles() {
 
 add_filter( 'gform_submit_button_7', '__return_false' );
 
+function gform_signature_height( $init_options ) {
+    $init_options['SignHeight'] = 70;
+    return $init_options;
+}
+
+add_filter( 'gform_signature_init_options', 'gform_signature_height' );
+
 ?>
