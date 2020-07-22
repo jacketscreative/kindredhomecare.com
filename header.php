@@ -23,7 +23,19 @@
 	wp_head();
 	
 	?>
+
+	<?php if(!empty($options['google-analytics'])) echo $options['google-analytics']; ?> 
+
+	<!-- Global site tag (gtag.js) - Google AdWords: 836369862 --> 
+	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-836369862"></script> 
+	<script> 
+		window.dataLayer = window.dataLayer || []; 
+		function gtag(){dataLayer.push(arguments);} 
+		gtag('js', new Date()); 
 	
+		gtag('config', 'AW-836369862'); 
+	</script> 
+
 </head>
 
 <?php
